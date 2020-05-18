@@ -35,12 +35,15 @@ public class Main {
 
         // Задание 6 **.
         int[] arr4 = new int[]{1, 1, 1, 1, 1, 5};
-        arrTask6(arr4);
+        int a = 0, b = 0;
+        boolean g = (a / 2) == b;
+        arrTask6(arr4, g);
+        System.out.println(g);
 
-        // Задание 7 ****.
-        int[] arr5 = new  int[]{1, 2, 3, 4, 5};
-        int n = 2;
-        arrTask7(arr5,n);
+        // Задание 7 ****. К сожалению, у меня не получилось её решить, очень долго сидел.
+        int[] arr5 = new int[]{1, 2, 3, 4, 5};
+        int n = 1;
+        arrTask7(arr5, n);
     }
 
     public static void arrTask1(int[] add) {
@@ -102,35 +105,33 @@ public class Main {
         }
     }
 
-    public static void arrTask6(int[] arr4) {
+    public static boolean arrTask6(int[] arr4, boolean g) {
         int a = 0, b = 0;
 
         for (int i = 0; i < arr4.length; i++) {
             a += arr4[i];
         }
-        boolean g = true;
         for (int j = 0; j < arr4.length; j++) {
             b += arr4[j];
             if ((a / 2) == b) {
-                System.out.println(g);
-                return;
+                break;
             } else if ((a / 2) < b) {
-                System.out.println("false");
-                return;
+                break;
             }
 
 
         }
+        return g;
     }
-
-    public static void arrTask7(int[] arr5,int n) {
+//
+    public static void arrTask7(int[] arr5, int n) {
         //int[] arr5 = new  int[]{1, 2, 3, 4, 5};
-        for (int i = 0; i < 5 ; i++) {
-            if((i-n) >= 0) {
-                arr5[i - n] = arr5[i];
-            } else {
-                int c = arr5.length % n;
-                arr5[n-i] = arr5[i];
+        for (int i = 0; i < 5; i++) {
+            if ((i - n) > 0) {
+                arr5[i] = arr5[i - n];
+            } else if ((i - n) < 0) {
+                int c = arr5.length - 1;
+                arr5[i] = arr5[c - i];
             }
         }
         System.out.println(Arrays.toString(arr5));
